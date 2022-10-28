@@ -11,7 +11,10 @@ const routes: Routes = [
   },
   {
     path: ':id/detail',
-    component: UserDetailComponent
+
+
+    loadChildren: () => import('../user-data/user-data.module').then(m => m.UserDataPageModule)
+
   }
 ];
 
@@ -19,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UsersPageRoutingModule {}
+export class UsersPageRoutingModule { }
