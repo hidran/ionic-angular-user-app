@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MovieService, User} from '../services/movie.service';
+import {User, UsersService} from '../services/users.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -10,11 +10,11 @@ import {Observable} from 'rxjs';
 export class UsersPage implements OnInit {
   public users$: Observable<User[]>;
 
-  constructor(private movieService: MovieService) {
+  constructor(private usersService: UsersService) {
   }
 
   ngOnInit() {
-    this.users$ = this.movieService.getUsers();
+    this.users$ = this.usersService.getUsers();
   }
 
 }

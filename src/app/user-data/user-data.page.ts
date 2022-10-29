@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {User, UsersService} from '../services/users.service';
 
 @Component({
   selector: 'app-user-data',
@@ -8,14 +9,18 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserDataPage implements OnInit {
   public userId = '';
+  public user: User;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private usersService: UsersService) {
   }
 
-  ngOnInit() {
-    // this.userId =  this.route.snapshot.params['id']
-    this.route.paramMap.subscribe(par => this.userId = par.get('id'));
-    console.log('componet initialized ' + this.userId);
+  async ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.user = await this.usersService.getUserById(id);
+    console.log(this.user);
   }
+
 
 }

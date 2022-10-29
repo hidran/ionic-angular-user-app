@@ -8,9 +8,6 @@
 </ion-header>
 
 <ion-content>
-  <h1>User's detail {{userId}}</h1>
-  <ion-list>
-    <ion-item routerLink="/users/0/detail">0</ion-item>
-    <ion-item routerLink="/users/4/detail">4</ion-item>
-  </ion-list>
+  <h1>User's detail {{user | json}}</h1>
+
 </ion-content>
