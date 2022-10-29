@@ -5,9 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="(users$ | async) as results">
     <!-- users/1/detail -->
-    <ion-item *ngFor="let user of users; let id = index" detail="true" [routerLink]="[id, 'detail']">
+    <ion-item *ngFor="let user of results['results']; let id = index" detail="true" [routerLink]="[id, 'detail']">
       <ion-avatar slot="start">
         <ion-img [src]="user.picture.thumbnail"></ion-img>
       </ion-avatar>
